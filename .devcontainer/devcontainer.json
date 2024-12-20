@@ -1,0 +1,32 @@
+{
+  "name": "Node.js & Vue.js",
+  "dockerComposeFile": "../docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/app",
+  "runServices": ["app", "backend", "db"],
+    "features": {
+      "ghcr.io/devcontainers/features/node:1": {
+        "version": "20"
+      }
+    },
+    "customizations": {
+      "vscode": {
+        "extensions": [
+            "esbenp.prettier-vscode",
+            "dbaeumer.vscode-eslint",
+            "octref.vetur",
+            "sdras.vue-vscode-snippets",
+            "mrmlnc.vscode-attrs-sorter",
+            "ms-vscode.vscode-typescript-next",
+            "zhuangtongfa.material-theme",
+            "pkief.material-icon-theme" 
+        ]
+      }
+    },
+    "postCreateCommand": "npm install",
+    "forwardPorts": [5173],
+    "mounts": [
+      "source=/home/node/.npm,target=/home/node/.npm,type=bind",
+      "source=${localWorkspaceFolder},target=/app,type=bind"
+    ]
+  }
